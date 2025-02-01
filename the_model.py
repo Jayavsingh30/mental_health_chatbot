@@ -65,7 +65,7 @@ model_history = model.fit(x=X,
                            y=y,
                            batch_size=10,
                            callbacks=[tensorflow.keras.callbacks.EarlyStopping(monitor='accuracy', patience=3)],
-                           epochs=100)
+                           epochs=1)
 
 
 def generate_answer(user_input): 
