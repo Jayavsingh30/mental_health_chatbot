@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Depression Test</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    :root {
+    --gradient-bg: linear-gradient(135deg, #0f172a, #1e293b);
+    --gradient-card: linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    --gradient-button: linear-gradient(135deg, #6366f1, #4f46e5);
+    --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --border-light: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
+
+    @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+    }
+
+    /* Base Styles */
+    body {
+    min-height: 100vh;
+    background: var(--gradient-bg);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+    color: #f8fafc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    }
+
+    .container {
+    max-width: 800px;
+    padding: 2rem;
+    margin: 2rem auto;
+    background: var(--gradient-card);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: var(--border-light);
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Header Styles */
+    h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, #f8fafc, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+    }
+
+    /* Form Styles */
+    .form-group {
+    margin-bottom: 2rem;
+    animation: fadeIn 0.6s ease-out backwards;
+    }
+
+    .form-group:nth-child(n) {
+    animation-delay: calc(n * 0.1s);
+    }
+
+    label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #e2e8f0;
+    font-weight: 500;
+    line-height: 1.5;
+    }
+
+    .form-control {
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-light);
+    border-radius: 12px;
+    padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center mt-4">Depression Test</h2>
+  <form method="POST">
+    {% for question in questions %}
+      <div class="form-group">
+        <label>{{ question }}</label>
+        <select name="question_{{ loop.index0 }}" class="form-control" required>
+          {% for option in options %}
+          <option value="{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary btn-block">Submit Test</button>
+  </form>
+</div>
+</body>
+</html>

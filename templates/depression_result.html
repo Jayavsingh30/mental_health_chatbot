@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Depression Test Result</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center mt-4">Your Depression Test Result</h2>
+  <p class="text-center">Your score is: {{ score }}/27</p>
+  <h4 class="text-center">Severity: {{ severity }}</h4>
+  <h5 class="mt-4">Advice:</h5>
+  <ul>
+    {% for tip in advice %}
+      <li>{{ tip }}</li>
+    {% endfor %}
+  </ul>
+  <div class="text-center mt-3">
+    <a href="{{ url_for('depression_test') }}" class="btn btn-secondary">Retake Test</a>
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Chat</a>
+  </div>
+</div>
+</body>
+</html>
