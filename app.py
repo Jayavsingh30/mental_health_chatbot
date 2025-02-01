@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import random
 import re
-from nlp_model import model, tokenizer, pad_sequences, X, lbl_enc, df
+from the_model import model, tokenizer, pad_sequences, X, lbl_enc, df
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  
