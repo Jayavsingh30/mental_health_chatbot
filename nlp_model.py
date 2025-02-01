@@ -10,7 +10,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Embedding, LSTM, LayerNormalization, Dense, Dropout
 import tensorflow 
 import sklearn
-with open(r".\intents.json", 'r',encoding="utf-8") as f:
+with open(r"intents.json", 'r',encoding="utf-8") as f:
     data = json.load(f)
 
 df = pd.DataFrame(data['intents'])
